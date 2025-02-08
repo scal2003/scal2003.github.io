@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation 6: First Look at Sony's Next-Gen Console - NX Gamers</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="theme-color" content="#000000">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">NX GAMERS</a>
+            <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener" class="social-link">
+                Follow us on Twitter
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <article class="article-page">
+            <img class="article-hero" src="https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=1200" alt="PS6 Console Reveal">
+            
+            <h1 class="article-title">PlayStation 6: First Look at Sony's Next-Gen Console</h1>
+            
+            <div class="article-content">
+                <p>Sony has finally lifted the curtain on their highly anticipated PlayStation 6, showcasing a revolutionary design and groundbreaking features that promise to define the next generation of gaming. The reveal event, livestreamed to millions worldwide, presented a console that pushes the boundaries of what we thought possible in gaming hardware.</p>
+
+                <p>The PS6's design represents a bold departure from its predecessor, featuring a quantum-inspired architecture that emphasizes both form and function. The sleek, matte black exterior houses what Sony claims is the most powerful gaming hardware ever created for a home console.</p>
+
+                <p>Technical Specifications:</p>
+                <ul>
+                    <li>Custom-designed quantum-enhanced processor with 24 cores</li>
+                    <li>64GB of ultra-fast DDR7 RAM</li>
+                    <li>6TB NVMe SSD with proprietary compression technology</li>
+                    <li>Next-gen ray tracing hardware with AI acceleration</li>
+                    <li>Support for 8K gaming at 60fps, 4K at 240fps</li>
+                </ul>
+
+                <p>The most striking innovation is the PS6's "Neural Link" controller, which introduces groundbreaking haptic feedback technology that can simulate an unprecedented range of physical sensations. Sony claims this will create "true immersion" that goes beyond anything currently available in gaming.</p>
+
+                <p>Launch titles announced for the system include:</p>
+                <ul>
+                    <li>God of War: Cosmic Redemption</li>
+                    <li>Horizon Zero Dawn 3</li>
+                    <li>Spider-Man: Multiverse</li>
+                    <li>Gran Turismo 8</li>
+                </ul>
+
+                <p>The PS6 will introduce "Quantum Streaming," a feature that promises to eliminate loading times entirely by predictively loading game content before players need it. This is achieved through advanced AI algorithms that learn from individual playing styles.</p>
+
+                <p>The console is set to launch in November 2025 with a base price of $599, with a digital-only version available for $499. Pre-orders are expected to open next month, and analysts predict unprecedented demand based on initial reaction to the reveal.</p>
+            </div>
+        </article>
+        
+        <button class="share-button article-share" onclick="share('PlayStation 6: First Look at Sony\'s Next-Gen Console', window.location.href)">
+            <i class="material-icons">share</i>
+        </button>
+    </div>
+
+    <script>
+        function share(title, url) {
+            const shareData = {
+                title: title,
+                url: url
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback copy to clipboard
+                const tempInput = document.createElement('input');
+                tempInput.value = shareData.url;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Link copied to clipboard!');
+            }
+        }
+    </script>
+</body>
+</html>

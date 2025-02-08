@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk 3 Development Confirmed by CD Projekt Red - NX Gamers</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="theme-color" content="#000000">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">NX GAMERS</a>
+            <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener" class="social-link">
+                Follow us on Twitter
+                <span class="arrow">↗</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <article class="article-page">
+            <img class="article-hero" src="https://images.unsplash.com/photo-1605106702734-205df224ecce?auto=format&fit=crop&w=1200" alt="Cyberpunk 3 Screenshot">
+            
+            <h1 class="article-title">Cyberpunk 3 Development Confirmed by CD Projekt Red</h1>
+            
+            <div class="article-content">
+                <p>CD Projekt Red has officially announced the development of Cyberpunk 3, the highly anticipated next installment in their groundbreaking cyberpunk series. Following the massive success and eventual redemption of Cyberpunk 2077, and its expansion Phantom Liberty, the studio is ready to push the boundaries of open-world gaming even further.</p>
+
+                <p>The announcement came during a special investor presentation where CD Projekt Red CEO Adam Kiciński revealed that the project has been in pre-production for the past year. The game is being developed on their new "REDengine Next" technology, which promises to deliver unprecedented levels of detail and interactivity in an urban environment.</p>
+
+                <p>New Features & Improvements:</p>
+                <ul>
+                    <li>Revolutionary AI-driven NPC behavior system</li>
+                    <li>Fully destructible environments</li>
+                    <li>Dynamic weather system affecting gameplay mechanics</li>
+                    <li>Enhanced character customization with biological augmentations</li>
+                    <li>Seamless multiplayer integration (optional)</li>
+                </ul>
+
+                <p>The game will feature a completely new protagonist and setting, taking players to the neon-drenched streets of Neo-Shanghai in the year 2099. The story will explore themes of consciousness transfer, digital immortality, and the blurring lines between human and artificial intelligence.</p>
+
+                <p>Technical Advancements:</p>
+                <ul>
+                    <li>Advanced ray tracing implementation</li>
+                    <li>Neural network-powered NPC interactions</li>
+                    <li>Procedurally generated side missions</li>
+                    <li>Real-time global illumination</li>
+                    <li>Adaptive AI difficulty system</li>
+                </ul>
+
+                <p>The studio emphasized their commitment to releasing the game "when it's ready," learning from past experiences. However, they provided a tentative release window of late 2026, with plans for extensive public testing phases beginning in 2025.</p>
+
+                <p>Perhaps most intriguingly, CD Projekt Red has partnered with several leading AI research firms to develop what they call "Dynamic Narrative Intelligence" - a system that promises to create uniquely personalized story experiences based on player choices and behavior patterns.</p>
+
+                <p>The game's development team has been significantly expanded, with dedicated studios in Warsaw, Vancouver, and Tokyo all contributing to the project. This global development approach aims to ensure authentic cultural representation and diverse perspectives in the game's creation.</p>
+            </div>
+        </article>
+        
+        <button class="share-button article-share" onclick="share('Cyberpunk 3 Development Confirmed by CD Projekt Red', window.location.href)">
+            <i class="material-icons">share</i>
+        </button>
+    </div>
+
+    <script>
+        function share(title, url) {
+            const shareData = {
+                title: title,
+                url: url
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback copy to clipboard
+                const tempInput = document.createElement('input');
+                tempInput.value = shareData.url;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Link copied to clipboard!');
+            }
+        }
+    </script>
+</body>
+</html>

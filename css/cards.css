@@ -1,0 +1,228 @@
+/* Article Grid */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Article Cards */
+.article-card,
+.featured-article {
+  background: var(--md-sys-color-surface);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s var(--md-sys-motion-standard);
+  box-shadow: var(--md-sys-elevation-1);
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.featured-article {
+  grid-column: 1 / -1;
+  margin-bottom: 2rem;
+}
+
+.article-card a,
+.featured-article a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.card-actions {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.share-button {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s var(--md-sys-motion-standard);
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.article-card:hover .share-button,
+.featured-article:hover .share-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.share-button:hover {
+  background: rgba(var(--md-sys-color-primary-rgb), 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--md-sys-color-glow);
+}
+
+/* Skeleton Loading */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: inherit;
+}
+
+/* Card Images */
+.article-card img,
+.featured-article img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s var(--md-sys-motion-standard),
+              filter 0.3s var(--md-sys-motion-standard);
+  filter: brightness(0.9);
+  opacity: 0;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  display: block;
+}
+
+.article-card img.loaded,
+.featured-article img.loaded {
+  opacity: 1;
+}
+
+.article-card img {
+  height: 240px;
+}
+
+.featured-article img {
+  height: 450px;
+}
+
+.article-card:hover img,
+.featured-article:hover img {
+  transform: scale(1.03) translateZ(0);
+  -webkit-transform: scale(1.03) translateZ(0);
+  filter: brightness(1);
+}
+
+/* Card Content */
+.article-card .content,
+.featured-article .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 70%,
+    transparent 100%
+  );
+  transition: all 0.3s var(--md-sys-motion-standard);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.article-card:hover,
+.featured-article:hover {
+  transform: translateY(-4px) scale(1.01) translateZ(0);
+  -webkit-transform: translateY(-4px) scale(1.01) translateZ(0);
+  box-shadow: var(--md-sys-elevation-3),
+              0 0 30px rgba(var(--md-sys-color-primary-rgb), 0.2);
+}
+
+.article-card:hover .content,
+.featured-article:hover .content {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.98) 0%,
+    rgba(0, 0, 0, 0.8) 70%,
+    transparent 100%
+  );
+  padding-bottom: 2.5rem;
+}
+
+.featured-article h1 {
+  font-size: var(--md-sys-typescale-headline-large-size);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.article-card h2 {
+  font-size: var(--md-sys-typescale-headline-small-size);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.article-card p {
+  color: var(--md-sys-color-on-surface);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.featured-article p {
+  color: var(--md-sys-color-on-surface);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: 1.5;
+  opacity: 0.9;
+  max-width: 65ch;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .article-grid {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .featured-article img {
+    height: 400px;
+  }
+
+  .article-card img {
+    height: 200px;
+  }
+  
+  .featured-article h1 {
+    font-size: var(--md-sys-typescale-headline-large-size);
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+}
