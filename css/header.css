@@ -19,34 +19,21 @@ nav {
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  transition: all 0.3s var(--md-sys-motion-standard);
+  transition: all 0.2s ease;
   position: relative;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.nav-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, 
-    rgba(var(--md-sys-color-primary-rgb), 0.1),
-    rgba(var(--md-sys-color-secondary-rgb), 0.1));
-  transform: translateY(100%);
-  transition: transform 0.3s var(--md-sys-motion-standard);
-  z-index: -1;
-}
-
-.nav-button:hover::before {
-  transform: translateY(0);
+  background: transparent;
+  cursor: pointer;
 }
 
 .nav-button:hover {
+  background: rgba(var(--md-sys-color-primary-rgb), 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(var(--md-sys-color-primary-rgb), 0.2);
+}
+
+.nav-button.active {
+  background: rgba(var(--md-sys-color-primary-rgb), 0.15);
   color: var(--md-sys-color-primary);
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .site-header {
@@ -73,33 +60,20 @@ nav {
 }
 
 .site-title {
-  font-size: 1.5rem;
+  font-family: 'Press Start 2P', system-ui;
+  font-size: 1.25rem;
   text-decoration: none;
-  font-weight: 900;
+  font-weight: 400;
   color: var(--md-sys-color-on-background);
   letter-spacing: 1px;
-  transition: all 0.3s ease;
   position: relative;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.site-title::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg,
-    var(--md-sys-color-primary),
-    var(--md-sys-color-secondary));
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.site-title:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.site-title:hover {
+  color: var(--md-sys-color-primary);
+  transform: scale(1.02);
 }
 
 /* Social Links */
@@ -107,6 +81,8 @@ nav {
   display: flex;
   gap: 1rem;
   position: relative;
+  height: 60px;
+  align-items: center;
 }
 
 .social-links-trigger {
@@ -117,39 +93,44 @@ nav {
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  transition: all 0.3s var(--md-sys-motion-standard);
+  transition: all 0.2s ease;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: transparent;
   cursor: pointer;
+}
+
+.social-links-trigger:hover {
+  background: rgba(var(--md-sys-color-primary-rgb), 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(var(--md-sys-color-primary-rgb), 0.2);
 }
 
 .social-dropdown {
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%;
   right: 0;
-  margin-top: 0.5rem;
   background: var(--md-sys-color-surface-2);
   border-radius: 12px;
   padding: 0.5rem;
-  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   flex-direction: column;
   gap: 0.5rem;
   min-width: 200px;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: all 0.3s var(--md-sys-motion-standard);
   box-shadow: var(--md-sys-elevation-3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
+  transition: all 0.2s ease;
+  transform: translateY(4px);
 }
 
-.social-links-trigger:hover + .social-dropdown,
-.social-dropdown:hover {
+.social-links:hover .social-dropdown {
+  visibility: visible;
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
+  transform: translateY(0);
 }
 
 .social-link {
@@ -162,7 +143,7 @@ nav {
   font-size: 0.9rem;
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  transition: all 0.3s var(--md-sys-motion-standard);
+  transition: all 0.2s ease;
   background: transparent;
 }
 
