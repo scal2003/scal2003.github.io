@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NEXT GAMERS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        .about-container {
+            margin-top: 20px;
+            padding: 2rem;
+        }
+
+        .about-header {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .about-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .about-header h1 {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .about-content h2 {
+            margin: 2rem 0 1rem;
+            color: var(--md-sys-color-on-background);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--md-sys-color-on-surface);
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-header img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-title">NEXT GAMERS</a>
+            <nav>
+                <a href="/" class="nav-button">Featured News</a>
+                <div class="nav-divider"></div>
+                <a href="/#reviews" class="nav-button">Reviews</a>
+                <a href="/#trivia" class="nav-button">Trivia</a>
+            </nav>
+            <div class="social-links">
+                <div class="social-links-trigger">
+                    <i class="material-icons">share</i>
+                    <span>Follow Us</span>
+                </div>
+                <div class="social-dropdown">
+                    <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener" class="social-link">
+                        <i class="material-icons">alternate_email</i>
+                        X (Twitter)
+                    </a>
+                    <a href="https://www.youtube.com/@NXGamersShorts" target="_blank" rel="noopener" class="social-link">
+                        <i class="material-icons">smart_display</i>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container about-container">
+        <div class="about-header">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200" 
+                 alt="Gaming Setup" 
+                 class="skeleton">
+            <h1>About NEXT GAMERS</h1>
+        </div>
+
+        <div class="about-content">
+            <p>Welcome to NEXT GAMERS! We are passionate about bringing you the latest and most exciting gaming news, reviews, and industry updates.</p>
+            
+            <p>Currently, our Reviews and Trivia sections are under development. We're working hard to bring you high-quality gaming reviews and entertaining trivia content soon. Stay tuned for these exciting features!</p>
+            
+            <h2>Our Mission</h2>
+            <p>Our mission is to keep gamers informed and engaged with the rapidly evolving world of gaming. From groundbreaking hardware announcements to indie game discoveries, we're here to bring you accurate, timely, and engaging content.</p>
+            
+            <h2>Connect With Us</h2>
+            <p>Follow us on social media to stay updated with the latest gaming news and join our growing community of passionate gamers.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener">
+                            <i class="material-icons">alternate_email</i>
+                        </a>
+                        <a href="https://www.youtube.com/@NXGamersShorts" target="_blank" rel="noopener">
+                            <i class="material-icons">smart_display</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NEXT GAMERS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top-button" aria-label="Scroll to top">
+        <i class="material-icons">arrow_upward</i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img.skeleton');
+            images.forEach(img => {
+                const newImg = new Image();
+                newImg.onload = () => {
+                    img.classList.remove('skeleton');
+                    img.classList.add('loaded');
+                };
+                newImg.src = img.src;
+            });
+        });
+
+        const scrollButton = document.getElementById('scroll-top');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scrollButton.style.display = "block";
+            } else {
+                scrollButton.style.display = "none";
+            }
+        };
+        scrollButton.onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
+    </script>
+</body>
+</html>

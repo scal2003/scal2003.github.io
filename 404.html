@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - NEXT GAMERS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 200px);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 60px;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(45deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Press Start 2P', system-ui;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            margin: 1rem 0 2rem;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s var(--md-sys-motion-standard);
+        }
+
+        .home-button:hover {
+            background: var(--md-sys-color-secondary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-title">NEXT GAMERS</a>
+            <nav>
+                <a href="/" class="nav-button">Featured News</a>
+                <div class="nav-divider"></div>
+                <a href="/#reviews" class="nav-button">Reviews</a>
+                <a href="/#trivia" class="nav-button">Trivia</a>
+            </nav>
+            <div class="social-links">
+                <div class="social-links-trigger">
+                    <i class="material-icons">share</i>
+                    <span>Follow Us</span>
+                </div>
+                <div class="social-dropdown">
+                    <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener" class="social-link">
+                        <i class="material-icons">alternate_email</i>
+                        X (Twitter)
+                    </a>
+                    <a href="https://www.youtube.com/@NXGamersShorts" target="_blank" rel="noopener" class="social-link">
+                        <i class="material-icons">smart_display</i>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">Game Over! This page doesn't exist.</p>
+        <a href="/" class="home-button">
+            <i class="material-icons">home</i>
+            Return to Homepage
+        </a>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener">
+                            <i class="material-icons">alternate_email</i>
+                        </a>
+                        <a href="https://www.youtube.com/@NXGamersShorts" target="_blank" rel="noopener">
+                            <i class="material-icons">smart_display</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NEXT GAMERS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
