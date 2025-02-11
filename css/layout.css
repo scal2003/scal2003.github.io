@@ -91,7 +91,7 @@ main {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   opacity: 0.7;
@@ -100,7 +100,6 @@ main {
 .social-icons a:hover {
   opacity: 1;
   background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
 }
 
 .social-icons .material-icons {
@@ -131,7 +130,7 @@ main {
   border: none;
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 0;
   display: none;
   align-items: center;
   justify-content: center;
@@ -144,9 +143,6 @@ main {
 
 .scroll-top-button:hover {
   background: var(--md-sys-color-surface-3);
-  transform: translateY(-2px);
-  box-shadow: var(--md-sys-elevation-3),
-              0 0 20px var(--md-sys-color-glow);
 }
 
 .scroll-top-button .material-icons {

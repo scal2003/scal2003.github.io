@@ -203,12 +203,24 @@
                     navButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
                     
-                    // Show/hide sections
+                    // Animate sections
                     sections.forEach(section => {
                         if (section.id === filter) {
                             section.style.display = 'block';
+                            // Small delay to ensure display: block takes effect
+                            setTimeout(() => {
+                                section.classList.remove('fade-out');
+                                section.classList.add('fade-in');
+                            }, 10);
                         } else {
-                            section.style.display = 'none';
+                            section.classList.add('fade-out');
+                            section.classList.remove('fade-in');
+                            // Remove from DOM after animation
+                            setTimeout(() => {
+                                if (section.classList.contains('fade-out')) {
+                                    section.style.display = 'none';
+                                }
+                            }, 300);
                         }
                     });
                 });
@@ -222,19 +234,25 @@
                 url: window.location.origin + '/' + url
             };
 
-            if (navigator.share) {
-                navigator.share(shareData)
-                    .catch(err => console.log('Error sharing:', err));
-            } else {
-                // Fallback copy to clipboard
-                const tempInput = document.createElement('input');
-                tempInput.value = shareData.url;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                alert('Link copied to clipboard!');
-            }
+            // Copy to clipboard using modern API
+            navigator.clipboard.writeText(shareData.url).then(() => {
+                const button = event.currentTarget;
+                const popup = document.createElement('div');
+                popup.className = 'share-popup';
+                popup.innerHTML = `
+                    <i class="material-icons">done</i>
+                    <span>Copied!</span>
+                `;
+                
+                // Position the popup near the button
+                button.parentElement.appendChild(popup);
+                
+                // Remove popup after animation
+                setTimeout(() => {
+                    popup.classList.add('fade-out');
+                    setTimeout(() => popup.remove(), 300);
+                }, 2000);
+            });
         }
 
         // Scroll to top functionality
