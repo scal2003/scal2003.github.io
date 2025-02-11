@@ -3,121 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - NEXT GAMERS</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Redirecting... - NEXT GAMERS</title>
+    <link rel="stylesheet" href="/css/md3.css">
+    <link rel="stylesheet" href="/css/animations.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <script>
+        // Short Link System
+        const shortLinks = {
+            '183': '/posts/most-anticipated-games-2025.html',
+            '294': '/posts/ps6-reveal.html',
+            '365': '/posts/zelda-tears-of-the-kingdom-2.html',
+            '476': '/posts/cyberpunk-3.html',
+            '587': '/posts/rtx-5090.html'
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const path = window.location.pathname;
+            let shortId = null;
+            const overlay = document.querySelector('.redirect-overlay');
+            
+            // Check if it's a /to/ path
+            if (path.startsWith('/to/')) {
+                shortId = path.split('/to/')[1];
+                // Remove any trailing slashes
+                shortId = shortId.replace(/\/$/, '');
+            }
+
+            overlay.style.display = 'flex';
+            
+            if (shortId && shortLinks[shortId]) {
+                // Valid short link found
+                overlay.classList.remove('error');
+                setTimeout(() => {
+                    window.location.href = shortLinks[shortId];
+                }, 1200);
+            } else {
+                // Not a short link or invalid ID, show error then redirect
+                document.title = "Page Not Found - NEXT GAMERS";
+                overlay.classList.add('error');
+                const content = overlay.querySelector('.redirect-content');
+                content.innerHTML = `
+                    <i class="material-icons">error_outline</i>
+                    <span>Page not found, redirecting home...</span>
+                `;
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
+            }
+        });
+    </script>
     <style>
-        .error-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: calc(100vh - 200px);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 60px;
-        }
-
-        .error-code {
-            font-size: 8rem;
-            font-weight: 900;
+        body {
             margin: 0;
-            background: linear-gradient(45deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Press Start 2P', system-ui;
+            height: 100vh;
+            background: var(--md-sys-color-background);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        .error-message {
-            font-size: 1.5rem;
-            margin: 1rem 0 2rem;
-            color: var(--md-sys-color-on-surface);
+        .redirect-overlay {
+            background: var(--md-sys-color-surface);
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.97);
         }
 
-        .home-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            background: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s var(--md-sys-motion-standard);
+        .redirect-overlay.error .material-icons {
+            color: #ff4444;
+            font-size: 3rem;
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
         }
 
-        .home-button:hover {
-            background: var(--md-sys-color-secondary);
-            transform: translateY(-2px);
+        .redirect-overlay.error span {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
         }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-            <a href="/" class="site-title">NEXT GAMERS</a>
-            <nav>
-                <a href="/" class="nav-button">Featured News</a>
-                <div class="nav-divider"></div>
-                <a href="/#reviews" class="nav-button">Reviews</a>
-                <a href="/#trivia" class="nav-button">Trivia</a>
-            </nav>
-            <div class="social-links">
-                <div class="social-links-trigger">
-                    <i class="material-icons">share</i>
-                    <span>Follow Us</span>
-                </div>
-                <div class="social-dropdown">
-                    <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener" class="social-link">
-                        <i class="material-icons">alternate_email</i>
-                        X (Twitter)
-                    </a>
-                    <a href="https://www.youtube.com/@NXGamersShorts" target="_blank" rel="noopener" class="social-link">
-                        <i class="material-icons">smart_display</i>
-                        YouTube
-                    </a>
-                </div>
-            </div>
+    <div class="redirect-overlay" style="display: none;">
+        <div class="redirect-content">
+            <div class="loading-ring"></div>
+            <span>Redirecting to article...</span>
         </div>
-    </header>
-
-    <div class="error-container">
-        <h1 class="error-code">404</h1>
-        <p class="error-message">Game Over! This page doesn't exist.</p>
-        <a href="/" class="home-button">
-            <i class="material-icons">home</i>
-            Return to Homepage
-        </a>
     </div>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="/about">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="https://twitter.com/NX_NEXTGAMERS" target="_blank" rel="noopener">
-                            <i class="material-icons">alternate_email</i>
-                        </a>
-                        <a href="https://www.youtube.com/@NXGamersShorts" target="_blank" rel="noopener">
-                            <i class="material-icons">smart_display</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 NEXT GAMERS. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
