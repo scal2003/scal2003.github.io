@@ -21,20 +21,6 @@
   will-change: transform;
 }
 
-@keyframes foldOut {
-  0% {
-    transform: rotateX(-95deg) translateY(-10%);
-    opacity: 0.2;
-  }
-  60% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: rotateX(0deg) translateY(0);
-    opacity: 1;
-  }
-}
-
 .article-meta-box {
   width: 100%;
   background: var(--md-sys-color-surface-1);
@@ -117,28 +103,6 @@
 .share-popup i {
   color: var(--md-sys-color-primary);
   font-size: 1.125rem;
-}
-
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes popOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
 }
 
 .article-content {
