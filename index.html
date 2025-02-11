@@ -119,6 +119,23 @@
                             </div>
                         </a>
                     </article>
+
+                    <article class="article-card">
+                        <div class="card-actions">
+                            <button class="share-button" onclick="share('Most Anticipated Games of 2025', 'posts/most-anticipated-games-2025')">
+                                <i class="material-icons">share</i>
+                            </button>
+                        </div>
+                        <a href="posts/most-anticipated-games-2025">
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800" alt="Most Anticipated Games 2025">
+                            <div class="content">
+                                <span class="article-tag">Featured News</span>
+                                <span class="article-date">February 11, 2025</span>
+                                <h2>Most Anticipated Games of 2025</h2>
+                                <p>From epic RPGs to innovative VR experiences, these are the must-watch games coming this year.</p>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </section>
 
@@ -169,11 +186,43 @@
         </div>
     </footer>
 
+    <div class="redirect-overlay" style="display: none;">
+        <div class="redirect-content">
+            <div class="loading-ring"></div>
+            <span>Redirecting to article...</span>
+        </div>
+    </div>
+
     <button id="scroll-top" class="scroll-top-button" aria-label="Scroll to top">
         <i class="material-icons">arrow_upward</i>
     </button>
 
     <script>
+        // Short Link System
+        const shortLinks = {
+            '183': '/posts/most-anticipated-games-2025.html',
+            '294': '/posts/ps6-reveal.html',
+            '365': '/posts/zelda-tears-of-the-kingdom-2.html',
+            '476': '/posts/cyberpunk-3.html',
+            '587': '/posts/rtx-5090.html'
+        };
+
+        // Check for redirect parameter
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const shortId = params.get('to');
+            
+            if (shortId && shortLinks[shortId]) {
+                const overlay = document.querySelector('.redirect-overlay');
+                overlay.style.display = 'flex';
+                
+                // Show animation first, then redirect
+                setTimeout(() => {
+                    window.location.href = shortLinks[shortId];
+                }, 1200);
+            }
+        });
+
         // Image loading with skeleton
         document.addEventListener('DOMContentLoaded', () => {
             const images = document.querySelectorAll('img[src]');
@@ -227,32 +276,58 @@
             });
         });
 
-        // Share functionality
-        function share(title, url) {
-            const shareData = {
-                title: title,
-                url: window.location.origin + '/' + url
-            };
+        // Reverse lookup for short links
+        const shortLinkIds = {
+            '/posts/most-anticipated-games-2025.html': '183',
+            '/posts/ps6-reveal.html': '294',
+            '/posts/zelda-tears-of-the-kingdom-2.html': '365',
+            '/posts/cyberpunk-3.html': '476',
+            '/posts/rtx-5090.html': '587'
+        };
 
-            // Copy to clipboard using modern API
-            navigator.clipboard.writeText(shareData.url).then(() => {
-                const button = event.currentTarget;
-                const popup = document.createElement('div');
-                popup.className = 'share-popup';
-                popup.innerHTML = `
-                    <i class="material-icons">done</i>
-                    <span>Copied!</span>
-                `;
-                
-                // Position the popup near the button
-                button.parentElement.appendChild(popup);
-                
-                // Remove popup after animation
-                setTimeout(() => {
-                    popup.classList.add('fade-out');
-                    setTimeout(() => popup.remove(), 300);
-                }, 2000);
-            });
+        // Share functionality with fallback
+        function share(title, url) {
+            const shortId = shortLinkIds['/' + url];
+            const shareUrl = window.location.origin + '/?to=' + shortId;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareUrl)
+                    .then(() => showCopiedPopup(event))
+                    .catch(() => fallbackCopy(shareUrl, event));
+            } else {
+                fallbackCopy(shareUrl, event);
+            }
+        }
+
+        function fallbackCopy(text, event) {
+            const input = document.createElement('input');
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showCopiedPopup(event);
+        }
+
+        function showCopiedPopup(event) {
+            const popup = document.createElement('div');
+            popup.className = 'share-popup';
+            popup.innerHTML = `
+                <i class="material-icons">done</i>
+                <span>Copied!</span>
+            `;
+            
+            popup.style.position = 'fixed';
+            popup.style.left = (event.clientX - 40) + 'px';
+            popup.style.top = (event.clientY - 40) + 'px';
+            document.body.appendChild(popup);
+            
+            setTimeout(() => {
+                popup.classList.add('fade-out');
+                setTimeout(() => popup.remove(), 300);
+            }, 2000);
         }
 
         // Scroll to top functionality
