@@ -1,0 +1,335 @@
+/* About Page Styles */
+
+.about-page {
+  padding: 0;
+  animation: fadeInUp 0.6s var(--md-sys-motion-standard) backwards;
+}
+
+/* Hero Section */
+.about-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin: -1rem -1.25rem 3rem;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.8s var(--md-sys-motion-standard) backwards;
+  animation-delay: 0.2s;
+}
+
+.hero-content h1 {
+  font-size: var(--md-sys-typescale-headline-large-size);
+  font-family: 'Press Start 2P', monospace;
+  margin-bottom: 1rem;
+  color: var(--md-sys-color-on-background);
+  line-height: 1.4;
+}
+
+.hero-tagline {
+  font-size: var(--md-sys-typescale-title-large-size);
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.9;
+  font-family: var(--font-primary);
+}
+
+/* Mission Section */
+.about-mission {
+  padding: 4rem 0;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-content h2 {
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  color: var(--md-sys-color-on-background);
+  margin-bottom: 1.5rem;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.mission-content > p {
+  font-size: var(--md-sys-typescale-body-large-size);
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.9;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.mission-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.highlight-card {
+  background: var(--md-sys-color-surface-1);
+  padding: 2rem;
+  text-align: center;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.6s var(--md-sys-motion-standard);
+}
+
+.highlight-card.animate-in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.highlight-card i {
+  font-size: 2.5rem;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 1rem;
+}
+
+.highlight-card h3 {
+  color: var(--md-sys-color-on-background);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  margin-bottom: 0.75rem;
+}
+
+.highlight-card p {
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.8;
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: 1.6;
+}
+
+/* Journey Section */
+.about-journey {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.about-journey h2 {
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  color: var(--md-sys-color-on-background);
+  margin-bottom: 3rem;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.journey-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--md-sys-color-primary);
+  opacity: 0.3;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s var(--md-sys-motion-standard);
+}
+
+.timeline-item:nth-child(even) {
+  transform: translateX(30px);
+}
+
+.timeline-item.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-content {
+  background: var(--md-sys-color-surface-1);
+  padding: 2rem;
+  position: relative;
+  width: calc(50% - 3rem);
+  margin-left: auto;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 0;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--md-sys-color-primary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+  left: -40px;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+  right: -40px;
+}
+
+.timeline-year {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--md-sys-color-primary);
+  font-size: var(--md-sys-typescale-label-large-size);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-content h3 {
+  color: var(--md-sys-color-on-background);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  margin-bottom: 0.75rem;
+}
+
+.timeline-content p {
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.8;
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: 1.6;
+}
+
+/* Connect Section */
+.about-connect {
+  padding: 4rem 0;
+  text-align: center;
+  background: var(--md-sys-color-surface-1);
+  margin: 0 -1.25rem;
+}
+
+.about-connect h2 {
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  color: var(--md-sys-color-on-background);
+  margin-bottom: 1rem;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.about-connect p {
+  color: var(--md-sys-color-on-surface);
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  font-size: var(--md-sys-typescale-body-large-size);
+}
+
+.connect-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.connect-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--md-sys-color-surface-2);
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: var(--md-sys-typescale-label-large-size);
+}
+
+.connect-button:hover {
+  background: var(--md-sys-color-surface-3);
+  transform: translateY(-2px);
+}
+
+.connect-button i {
+  font-size: 1.25rem;
+  color: var(--md-sys-color-primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mission-highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    height: 50vh;
+    margin: -1rem -1.25rem 2rem;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: var(--md-sys-typescale-headline-medium-size);
+  }
+
+  .hero-tagline {
+    font-size: var(--md-sys-typescale-title-medium-size);
+  }
+
+  .mission-highlights {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .journey-timeline::before {
+    left: 0;
+  }
+
+  .timeline-item {
+    margin-bottom: 3rem;
+  }
+
+  .timeline-content {
+    width: calc(100% - 3rem);
+    margin-left: 3rem;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 3rem;
+  }
+
+  .timeline-content::before {
+    left: -40px !important;
+    right: auto !important;
+  }
+
+  .connect-links {
+    flex-direction: column;
+    padding: 0 1.25rem;
+  }
+
+  .about-section {
+    padding: 3rem 0;
+  }
+}

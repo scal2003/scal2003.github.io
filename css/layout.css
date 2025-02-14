@@ -152,12 +152,17 @@ main {
 /* Responsive */
 @media (max-width: 768px) {
   .container {
-    padding: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  body {
+    padding-top: 56px;
   }
 
   .footer-content {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 2.5rem;
   }
 
   .social-icons {
@@ -167,5 +172,7 @@ main {
   .scroll-top-button {
     right: 1rem;
     bottom: 1rem;
+    width: 44px;
+    height: 44px;
   }
 }
